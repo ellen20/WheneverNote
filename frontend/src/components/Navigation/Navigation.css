@@ -1,0 +1,11 @@
+li {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+}
+.nav{
+    background-color: rgb(246, 249, 250);
+}
