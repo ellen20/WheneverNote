@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
 
@@ -12,6 +12,7 @@ function SignupFormPage() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState([]);
+    const history = useHistory();
 
     if (sessionUser) return <Redirect to="/" />;
 
@@ -27,6 +28,8 @@ function SignupFormPage() {
         }
         return setErrors(['Confirm Password field must be the same as the Password field']);
     };
+
+    history.push('/notes');//Once Sign up, go to the /notes page show previous notes.
 
     return (
         <form onSubmit={handleSubmit} className="signup-form">
