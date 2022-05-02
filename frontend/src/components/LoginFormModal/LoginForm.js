@@ -20,6 +20,18 @@ function LoginForm() {
         );
     };
 
+    const onClick = () => {
+        setErrors([]);
+        setCredential("demo");
+        setPassword("demo123");
+        return dispatch(sessionActions.login({ credential: "demo", password:"demo123" })).catch(
+            async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+            }
+        );
+    }
+
     return (
         <form onSubmit={handleSubmit} className="login-form">
             <ul>
@@ -46,7 +58,7 @@ function LoginForm() {
                 />
             </label>
             <button type="submit">Log In</button>
-            <button type="button">Demo User</button>
+            <button type="button" onClick={onClick}>Demo User</button>
         </form>
     );
 }
