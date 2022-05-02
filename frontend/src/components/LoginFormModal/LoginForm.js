@@ -22,9 +22,9 @@ function LoginForm() {
 
     const onClick = () => {
         setErrors([]);
-        setCredential("demo");
-        setPassword("demo123");
-        return dispatch(sessionActions.login({ credential: "demo", password:"demo123" })).catch(
+        setCredential("Demo-lition");
+        setPassword("password");
+        return dispatch(sessionActions.login({ credential: "Demo-lition", password:"password" })).catch(
             async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
