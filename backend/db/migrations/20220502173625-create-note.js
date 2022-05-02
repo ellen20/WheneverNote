@@ -1,31 +1,36 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Users', {
+    return queryInterface.createTable('Notes', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      username: {
-        type: Sequelize.STRING(30),
+      userId: {
         allowNull: false,
-        unique: true
+        type: Sequelize.INTEGER,
+        unique: true,
+        references: { model: "Users" }
       },
-      email: {
-        type: Sequelize.STRING(256),
+      notebookId: {
         allowNull: false,
-        unique: true
+        type: Sequelize.INTEGER,
+        unique: true,
+        references: { model: "Notebooks" }
       },
-      hashedPassword: {
-        type: Sequelize.STRING.BINARY,
-        allowNull: false
+      title: {
+        allowNull: false,
+        type: Sequelize.STRING(50)
+      },
+      content: {
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now')//do not need add in seeder file
+        defaultValue: Sequelize.fn('now')
       },
       updatedAt: {
         allowNull: false,
@@ -34,8 +39,7 @@ module.exports = {
       }
     });
   },
-
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Users');
+    return queryInterface.dropTable('Notes');
   }
 };
