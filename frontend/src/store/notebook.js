@@ -1,73 +1,77 @@
-// import { csrfFetch } from './csrf';
+import { csrfFetch } from './csrf';
 
-// const SET_NOTEBOOK = 'notebook/setNotebook';
-// const UPDATE_NOTEBOOK = 'notebook/updateNotebook';
-// const REMOVE_NOTBOOK = 'notebook/removeNotebook';
+const SET_NOTEBOOK = 'notebook/setNotebook';
+const UPDATE_NOTEBOOK = 'notebook/updateNotebook';
+const REMOVE_NOTEBOOK = 'notebook/removeNotebook';
 
-// const createNotebook = (title) => {
-//     return {
-//         type: SET_NOTEBOOK,
-//         payload: title
-//     };
-// };
+const setNotebook = (title) => {
+    return {
+        type: SET_NOTEBOOK,
+        payload: title
+    };
+};
 
-// const updateNotebook = (title) => {
-//     return {
-//         type: UPDATE_NOTEBOOK,
-//         payload: title
-//     }
-// }
-// const removeNotebook = () => {
-//     return {
-//         type: REMOVE_NOTBOOK,
-//     };
-// };
+const updateNotebook = (title) => {
+    return {
+        type: UPDATE_NOTEBOOK,
+        payload: title
+    }
+}
+const removeNotebook = () => {
+    return {
+        type: REMOVE_NOTEBOOK,
+    };
+};
 
-// // export const create = (title) => async (dispatch) => {
-// //     const { credential, password } = user;
-// //     const response = await csrfFetch('/api/session', {
-// //         method: 'POST',
-// //         body: JSON.stringify({
-// //             credential,
-// //             password,
-// //         }),
-// //     });
-// //     const data = await response.json();
-// //     dispatch(setUser(data.user));
-// //     return response;
-// // };
+export const createNotebook = (notebook) => async (dispatch) => {
+    const { userId, title } = notebook
+    const response = await csrfFetch('/api/notebook', {
+        method: 'POST',
+        body: JSON.stringify({
+           userId,
+           title
+        }),
+    });
+    const data = await response.json();
+    // dispatch(setUser(data.user));
+    return response;
+};
 
-// // export const signup = (user) => async (dispatch) => {
-// //     const { username, email, password } = user;
-// //     const response = await csrfFetch("/api/users", {
-// //         method: "POST",
-// //         body: JSON.stringify({
-// //             username,
-// //             email,
-// //             password,
-// //         }),
-// //     });
-// //     const data = await response.json();
-// //     dispatch(setUser(data.user));
-// //     return response;
-// // };
-
+export const editNotebook = (notebook) => async (dispatch) => {
+    const { userId, title } = notebook
+    const response = await csrfFetch('/api/notebook', {
+        method: 'PUT',
+        body: JSON.stringify({
+            userId,
+            title
+        }),
+    });
+    const data = await response.json();
+    // dispatch(setUser(data.user));
+    return response;
+};
 
 
-// const notebookReducer = (state = initialState, action) => {
-//     let newState;
-//     switch (action.type) {
-//         case SET_NOTEBOOK:
-//             newState = Object.assign({}, state);
-//             newState.user = action.payload;
-//             return newState;
-//         case REMOVE_USER:
-//             newState = Object.assign({}, state);
-//             newState.user = null;
-//             return newState;
-//         default:
-//             return state;
-//     }
-// };
+const initialState = { notebook: null };
 
-// export default notebookReducer;
+const notebookReducer = (state = initialState, action) => {
+    let newState;
+    switch (action.type) {
+        case SET_NOTEBOOK:
+            newState = Object.assign({}, state);
+            newState.notebook = action.payload;
+            return newState;
+        case UPDATE_NOTEBOOK:
+            newState = Object.assign({}, state);
+            newState.notebook = action.payload;
+            return newState;
+        case REMOVE_NOTEBOOK:
+            newState = Object.assign({}, state);
+            newState.notebook = null;
+            return newState;
+        default:
+            return state;
+    }
+};
+
+export default notebookReducer;

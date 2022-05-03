@@ -47,7 +47,7 @@ function Notebooks() {
                         <button type="button" onClick={onCancel}>Delete</button>
                     </td>
                     <td>
-                        <NavLink to='/note'>Create New Note</NavLink>
+                        <NavLink to='/note/new'>Create New Note</NavLink>
                     </td>
                 </tr>
             </table>

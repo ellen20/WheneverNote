@@ -1,15 +1,22 @@
 import React, { useState } from "react";
 import * as notebookActions from "../../store/notebook";
-import { useDispatch } from "react-redux";
 import "./Notebook.css";
+import { Redirect, useHistory } from 'react-router-dom';
+import { createNotebook } from '../../store/notebook';
+import { useDispatch, useSelector } from "react-redux";
 
 function Notebook() {
     const dispatch = useDispatch();
     const [title, setTitle] = useState("");
     const [errors, setErrors] = useState([]);
+    const history = useHistory();
+    const sessionUser = useSelector((state)=> state.session.user);
 
     const onClick = () => {
         setErrors([]);
+        const newNotebook = { userId: sessionUser.id , title: title };
+        history.replace('/notebooks')
+        dispatch(createNotebook(newNotebook));
 
         // return dispatch(sessionActions.login({ credential: "Demo-lition", password: "password" })).catch(
         //     async (res) => {
@@ -20,7 +27,7 @@ function Notebook() {
     }
 
     const onCancel = () =>{
-
+      history.replace('/')
     }
     return (
         <div className="notebook-page">

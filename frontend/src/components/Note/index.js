@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import * as notebookActions from "../../store/notebook";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import "./Note.css";
 
-function Notebook() {
+function Note() {
     const dispatch = useDispatch();
     const [title, setTitle] = useState("");
     const [errors, setErrors] = useState([]);
+    const history = useHistory();
 
     const onClick = () => {
         setErrors([]);
+        history.replace("/notes")
     }
 
     const onCancel = () => {
-
+        history.replace('/notebooks')
     }
     return (
         <div className="note-page">
@@ -45,4 +48,4 @@ function Notebook() {
     );
 }
 
-export default Notebook;
+export default Note;

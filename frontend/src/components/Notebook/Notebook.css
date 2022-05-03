@@ -1,6 +1,7 @@
 .notebook-page {
-    background-color: white;
+    background-color: rgb(252, 246, 246);
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
+    height: auto;
+    width: auto;
 }

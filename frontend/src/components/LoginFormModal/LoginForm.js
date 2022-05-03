@@ -12,10 +12,13 @@ function LoginForm() {
     const history = useHistory();
     const sessionUser = useSelector((state=>state.session.user));
 
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        history.push('/notes');
         setErrors([]);
+
         return dispatch(
             sessionActions.login({ credential, password })
             ).catch(
@@ -23,6 +26,7 @@ function LoginForm() {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
             }
+
         );
 
     };
@@ -31,6 +35,7 @@ function LoginForm() {
         setErrors([]);
         setCredential("Demo-lition");
         setPassword("password");
+        history.push('/notes');
         return dispatch(sessionActions.login({ credential: "Demo-lition", password:"password" })).catch(
             async (res) => {
                 const data = await res.json();
@@ -38,8 +43,6 @@ function LoginForm() {
             }
         );
     };
-
-    history.push('/notes');//Once logged in, go to the /notes page show previous notes.
 
     return (
         <form onSubmit={handleSubmit} className="login-form">

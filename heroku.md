@@ -95,9 +95,9 @@ JWT_EXPIRES_IN=604800
 - git push heroku main:master
 (https://whenever-note.herokuapp.com)
 
-Note:
-heroku run npm run sequelize db:migrate
-heroku run npm run sequelize db:seed:all
+- heroku run npm run sequelize db:migrate
+- heroku run npm run sequelize db:seed:all
+
 heroku bash
     npm run sequelize db:migrate
 heroku logs
