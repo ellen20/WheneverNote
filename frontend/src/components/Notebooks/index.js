@@ -1,36 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as notebookActions from "../../store/notebook";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./Notebooks.css";
-import {NavLink} from 'react-router-dom';
+import {NavLink, useHistory} from 'react-router-dom';
 
 function Notebooks() {
     const dispatch = useDispatch();
     const [title, setTitle] = useState("");
     const [errors, setErrors] = useState([]);
+    const history = useHistory();
+    const notebooks = useSelector((state) => state.notebook.notebook);
+    console.log(">>>>>>>>>>",notebooks)
+    useEffect(() =>{
+        dispatch(notebookActions.getNotebooks())
+    },[]);
 
     const onClick = () => {
         setErrors([]);
 
-        // return dispatch(sessionActions.login({ credential: "Demo-lition", password: "password" })).catch(
-        //     async (res) => {
-        //         const data = await res.json();
-        //         if (data && data.errors) setErrors(data.errors);
-        //     }
-        // );
     }
 
     const onCancel = () => {
-
+        history.replace('/')
     }
     return (
         <div className="notebooks-page">
+            <h2>My Notebooks:</h2>
             <ul>
                 {errors.map((error, idx) => (
                     <li key={idx}>{error} </li>
                 ))}
             </ul>
-            <table>
+            <ul>
+                 {notebooks.map((notebook, idx) => (
+                    <li key={idx}>{notebook?.title} {notebook?.createdAt} {notebook?.updatedAt}
+                    <button type="button" onClick={onClick}>Edit</button>
+                    <button type="button" onClick={onCancel}>Delete</button>
+            </li>))}
+            </ul>
+            {/* <table>
                 <tr>
                     <th>Title</th>
                     <th>Created At</th>
@@ -39,7 +47,7 @@ function Notebooks() {
                     <th></th>
                 </tr>
                 <tr>
-                    <td>title</td>
+                    <td>{notebooks.title}</td>
                     <td>createdAt</td>
                     <td>updatedAt</td>
                     <td>
@@ -50,7 +58,7 @@ function Notebooks() {
                         <NavLink to='/note/new'>Create New Note</NavLink>
                     </td>
                 </tr>
-            </table>
+            </table> */}
 
         </div>
     );

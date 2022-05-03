@@ -4,17 +4,17 @@ const SET_NOTEBOOK = 'notebook/setNotebook';
 const UPDATE_NOTEBOOK = 'notebook/updateNotebook';
 const REMOVE_NOTEBOOK = 'notebook/removeNotebook';
 
-const setNotebook = (title) => {
+const setNotebook = (notebook) => {
     return {
         type: SET_NOTEBOOK,
-        payload: title
+        payload: notebook
     };
 };
 
-const updateNotebook = (title) => {
+const updateNotebook = (notebook) => {
     return {
         type: UPDATE_NOTEBOOK,
-        payload: title
+        payload: notebook
     }
 }
 const removeNotebook = () => {
@@ -23,6 +23,13 @@ const removeNotebook = () => {
     };
 };
 
+export const getNotebooks = () => async (dispatch) => {
+    const response = await csrfFetch('/api/notebook');
+    const data = await response.json();
+    dispatch(setNotebook(data.notebooks));
+    return response;
+
+}
 export const createNotebook = (notebook) => async (dispatch) => {
     const { userId, title } = notebook
     const response = await csrfFetch('/api/notebook', {
@@ -33,7 +40,7 @@ export const createNotebook = (notebook) => async (dispatch) => {
         }),
     });
     const data = await response.json();
-    // dispatch(setUser(data.user));
+    dispatch(setNotebook(data.notebook));
     return response;
 };
 
@@ -47,7 +54,7 @@ export const editNotebook = (notebook) => async (dispatch) => {
         }),
     });
     const data = await response.json();
-    // dispatch(setUser(data.user));
+    dispatch(setNotebook(data.notebook));
     return response;
 };
 

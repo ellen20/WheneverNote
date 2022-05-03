@@ -50,13 +50,11 @@ router.put(
 );
 
 //Delete NoteBook
+router.delete('/', async (req, res) => {
+    const { id } = req.body;
+    const notebook = await Notebook.findByPk(id);
+    notebook.destroy();
 
-
-
-
-
-
-
-
+})
 
 module.exports = router;
