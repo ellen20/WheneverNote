@@ -14,7 +14,9 @@ const validateNotebook = [
 ];
 
 router.get('/', asyncHandler(async (req, res) => {
-    const notebooks = await Notebook.findAll();
+    const notebooks = await Notebook.findAll({
+        order:[['id', 'ASC']]
+    });
     return res.json({
         notebooks
     })
@@ -54,7 +56,6 @@ router.delete('/', async (req, res) => {
     const { id } = req.body;
     const notebook = await Notebook.findByPk(id);
     notebook.destroy();
-
 })
 
 module.exports = router;
