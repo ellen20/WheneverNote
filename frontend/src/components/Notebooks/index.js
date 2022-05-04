@@ -21,8 +21,12 @@ function Notebooks() {
 
     }
 
-    const onDelete = () => {
-        dispatch(notebookActions.deleteNotebook())
+    const onDelete = (e) => {
+        let id = e.target.value;
+        console.log(">>>>>>>>>", e.target.value)
+        dispatch(notebookActions.deleteNotebook(id));
+        // history.replace('/notebooks')
+        // dispatch(notebookActions.getNotebooks())
     }
 
     return (
@@ -33,14 +37,17 @@ function Notebooks() {
                     <li key={idx}>{error} </li>
                 ))}
             </ul>
-            <ul>
+            <ol>
                  {notebooks.map((notebook, idx) => (
-                    <li key={idx}>{notebook?.title} {notebook?.createdAt} {notebook?.updatedAt}
-                    <button type="button" onClick={onEdit}>Edit</button>
-                    <button type="button" onClick={onDelete}>Delete</button>
+                    <li key={idx}>
+                        Title: {notebook?.title}
+                        {/* Created At: {notebook?.createdAt}
+                        Updated At: {notebook?.updatedAt} */}
+                    {/* <button className="notebook-edit" type="button" name="edit" value={notebook.id} onClick={onEdit}>Edit</button> */}
+                    <button className="notebook-delete" type="button" name='delete' value={notebook.id} onClick={onDelete}>Delete</button>
                     <NavLink to='/note/new'>Create New Note</NavLink>
             </li>))}
-            </ul>
+            </ol>
         </div>
     );
 }

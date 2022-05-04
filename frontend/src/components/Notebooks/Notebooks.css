@@ -1,5 +1,8 @@
 .notebooks-page {
     background-color: white;
     width: auto;
-    height: 300px;
+    height: auto;
+}
+li {
+    color: blue;
 }

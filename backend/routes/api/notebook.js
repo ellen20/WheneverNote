@@ -55,7 +55,7 @@ router.put(
 router.delete('/', async (req, res) => {
     const { id } = req.body;
     const notebook = await Notebook.findByPk(id);
-    notebook.destroy();
+    await notebook.destroy();
 })
 
 module.exports = router;
