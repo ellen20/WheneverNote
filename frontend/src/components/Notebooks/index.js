@@ -6,7 +6,7 @@ import {NavLink, useHistory} from 'react-router-dom';
 
 function Notebooks() {
     const dispatch = useDispatch();
-    const [id, setId] = useState(null);
+    // const [id, setId] = useState(null);
     const [errors, setErrors] = useState([]);
     const history = useHistory();
     let notebooks = useSelector((state) => state.notebook);
@@ -14,7 +14,7 @@ function Notebooks() {
 
     useEffect(() =>{
         dispatch(notebookActions.getNotebooks())
-    },[id]);
+    },[]);
 
     const onEdit = () => {
         setErrors([]);
@@ -22,12 +22,15 @@ function Notebooks() {
     }
 
     const onDelete = (e) => {
-        setId(e.target.value);
+        // setId(e.target.value);
+        let id = e.target.value;
         console.log(">>>>>>>>>", e.target.value)
         dispatch(notebookActions.deleteNotebook(id));
         // history.replace('/notebooks')
         // dispatch(notebookActions.getNotebooks())
     }
+
+    notebooks.sort((a, b) => b.id - a.id)
 
     return (
         <div className="notebooks-page">
@@ -49,6 +52,7 @@ function Notebooks() {
                     <NavLink to='/note/new'>Create New Note</NavLink>
             </li>))}
             </ol>
+            <NavLink to='/'>Cancel</NavLink>
         </div>
     );
 }

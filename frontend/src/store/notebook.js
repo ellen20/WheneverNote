@@ -73,9 +73,10 @@ export const deleteNotebook = (id) => async (dispatch) => {
             id
         }),
     });
-    // const data = await response.json();
-    dispatch(removeNotebook({id}));
-    return response;
+    const data = await response.json();
+    console.log("<<<<<<<<<<<",data)
+    dispatch(removeNotebook(id));
+    return response;//
 };
 
 const initialState = {};
@@ -96,9 +97,10 @@ const notebookReducer = (state = initialState, action) => {
         // case UPDATE_NOTEBOOK:
         //     return newState;
         case REMOVE_NOTEBOOK:
+            console.log("!!!!!!!!!!",action)
             newState = {...state};
-            let {id} = action.id;
-            delete newState[id];
+            // let {id} = action.id;
+            delete newState[action.id];
             return newState;
         default:
             return state;
