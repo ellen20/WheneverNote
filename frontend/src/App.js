@@ -19,15 +19,12 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      <div className="note-notebook-links">
-        <ul>
-          <li><NavLink to='/notes' >Show Notes</NavLink></li>
-          <li><NavLink to='/notebook/new' >Create Notebook</NavLink></li>
-          <li><NavLink to='/notebooks' >Show Notebooks</NavLink></li>
-          <li><NavLink to='/note/new' >Create Note</NavLink></li>
-        </ul>
 
+      <div className="note-notebook-links">
+        <NavLink to='/notes' >Show Notes</NavLink>
+        <NavLink to='/notebooks' >Show Notebooks</NavLink>
       </div>
+
         <Switch>
           <Route path="/notes">
             <Notes />

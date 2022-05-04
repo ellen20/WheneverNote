@@ -10,7 +10,10 @@ function Notes() {
     // const notebooks =
     return (
         <div className="notes-page">
+
             <h2>{sessionUser?.username}'s Notes:</h2>
+            <NavLink to='/notebook/new'>Create New Notebook</NavLink>
+
             <ul>
 
                 <li>
@@ -21,7 +24,7 @@ function Notes() {
                 </li>
             </ul>
             {/* <button type="click" onClick={onClick}>Create New Notebook</button> */}
-            <NavLink to='/notebook/new'>Create New Notebook</NavLink>
+
         </div>
     );
 }

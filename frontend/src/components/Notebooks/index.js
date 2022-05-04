@@ -6,7 +6,7 @@ import {NavLink, useHistory} from 'react-router-dom';
 
 function Notebooks() {
     const dispatch = useDispatch();
-    const [title, setTitle] = useState("");
+    const [id, setId] = useState(null);
     const [errors, setErrors] = useState([]);
     const history = useHistory();
     let notebooks = useSelector((state) => state.notebook);
@@ -14,7 +14,7 @@ function Notebooks() {
 
     useEffect(() =>{
         dispatch(notebookActions.getNotebooks())
-    },[]);
+    },[id]);
 
     const onEdit = () => {
         setErrors([]);
@@ -22,7 +22,7 @@ function Notebooks() {
     }
 
     const onDelete = (e) => {
-        let id = e.target.value;
+        setId(e.target.value);
         console.log(">>>>>>>>>", e.target.value)
         dispatch(notebookActions.deleteNotebook(id));
         // history.replace('/notebooks')
@@ -32,6 +32,7 @@ function Notebooks() {
     return (
         <div className="notebooks-page">
             <h2>My Notebooks:</h2>
+            <NavLink to='/notebook/new' >Create Notebook</NavLink>
             <ul>
                 {errors.map((error, idx) => (
                     <li key={idx}>{error} </li>
@@ -40,7 +41,7 @@ function Notebooks() {
             <ol>
                  {notebooks.map((notebook, idx) => (
                     <li key={idx}>
-                        Title: {notebook?.title}
+                        {notebook?.title}
                         {/* Created At: {notebook?.createdAt}
                         Updated At: {notebook?.updatedAt} */}
                     {/* <button className="notebook-edit" type="button" name="edit" value={notebook.id} onClick={onEdit}>Edit</button> */}
