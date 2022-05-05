@@ -11,9 +11,14 @@ function Edit() {
     const [errors, setErrors] = useState([]);
     const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user);
+    let notes = useSelector((state) => state.note);
+    notes = Object.values(notes);
+
     let { notebookId, id } = useParams();
     notebookId = parseInt(notebookId, 10);
     id = parseInt(id, 10);
+
+    const defaultNote = notes.filter(note => note.id === id);
 
     const onEdit = () => {
         setErrors([]);
@@ -39,7 +44,7 @@ function Edit() {
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     required
-                    placeholder={title}
+                    placeholder={defaultNote[0].title}
                 />
             </label>
             <label>
@@ -48,6 +53,7 @@ function Edit() {
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                     required
+                    placeholder={defaultNote[0].content}
                 />
             </label>
             <button type="button" onClick={onEdit}>Edit Note</button>
