@@ -8,6 +8,8 @@ import Notebook from "./components/Notebook";
 import Notes from "./components/Notes";
 import Notebooks from "./components/Notebooks";
 import Note from "./components/Note";
+import Edit from "./components/Edit";
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -26,17 +28,20 @@ function App() {
       </div>
 
         <Switch>
+          <Route path="/notebooks">
+            <Notebooks />
+          </Route>
           <Route path="/notes">
             <Notes />
           </Route>
           <Route path="/notebook/new">
             <Notebook  />
           </Route>
-          <Route path="/notebooks">
-            <Notebooks />
-          </Route>
-          <Route path="/note/new">
+          <Route path="/note/:notebookId">
             <Note />
+          </Route>
+          <Route path="/:id/:notebookId">
+            <Edit />
           </Route>
         </Switch>
 

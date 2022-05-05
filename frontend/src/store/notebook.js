@@ -74,7 +74,7 @@ export const deleteNotebook = (id) => async (dispatch) => {
         }),
     });
     const data = await response.json();
-    console.log("<<<<<<<<<<<",data)
+    // console.log("<<<<<<<<<<<",data)
     dispatch(removeNotebook(id));
     return response;//
 };
