@@ -38,6 +38,7 @@ export const createNote = (note) => async (dispatch) => {
         }),
     });
     const data = await response.json();
+    // console.log(">>>>>>>>", data)
     dispatch(setNote(data.note));
     return response;
 };
@@ -57,7 +58,7 @@ export const deleteNote = (id) => async (dispatch) => {
         }),
     });
     const data = await response.json();
-    console.log("<<<<<<<<<<<", data)
+    // console.log("<<<<<<<<<<<", data)
     dispatch(removeNote(id));
     return response;
 };

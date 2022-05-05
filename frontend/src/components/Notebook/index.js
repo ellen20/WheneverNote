@@ -17,13 +17,6 @@ function Notebook() {
         const newNotebook = { userId: sessionUser.id , title: title };
 
         dispatch(notebookActions.createNotebook(newNotebook));
-
-        // return dispatch(sessionActions.login({ credential: "Demo-lition", password: "password" })).catch(
-        //     async (res) => {
-        //         const data = await res.json();
-        //         if (data && data.errors) setErrors(data.errors);
-        //     }
-        // );
     }
 
     const onCancel = () =>{

@@ -19,7 +19,6 @@ function Edit() {
         setErrors([]);
         history.replace("/notes");
         const newNote = { userId: sessionUser.id, notebookId, title, content };
-        console.log(">>>>>>>",newNote)
         dispatch(noteActions.editNote(id, newNote));
     }
 

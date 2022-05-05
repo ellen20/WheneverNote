@@ -1,3 +1,4 @@
+Wed:
 1. notebooks delete feature half-done:
 - problem: only delete in database not in browser, but when refresh browser updated...
 - my try: store created action creator and reducer for delete
@@ -16,3 +17,10 @@ heroku restart && heroku pg:reset DATABASE --confirm <<app name>> && heroku run 
 heroku restart && heroku pg:reset DATABASE --confirm whenever-note && heroku run npm run sequelize db:migrate && heroku run npm run sequelize db:seed:all
 
 4. ol li number no showing...
+
+Thursday:
+=========
+0. git push from git branch to git hub?
+1. problem: in All notebooks page(/notebooks), notebook.title not showing but after refresh it will showing
+2. problem: same in after edit
+3. want to display previous info in edit page?

@@ -17,21 +17,21 @@ function Notes() {
     // console.log(">>>>>>>>", notes);
     const onDelete = (e) => {
         let id = e.target.value;
-        console.log(">>>>>>>>>", e.target.value)
+        // console.log(">>>>>>>>>", e.target.value)
         dispatch(noteActions.deleteNote(id));
     };
 
     return (
         <div className="notes-page">
-            <h2>{sessionUser?.username}'s Notes:</h2>
+            <h2>All Notes:</h2>
             <NavLink to='/notebook/new'>Create New Notebook</NavLink>
 
             <ul>
                 {notes.map((note, idx) => (
                     <li key={idx}>
-                        {note.Notebook?.title}:
-                        {note?.title}:
-                        {note?.content}
+                        <span>notebook: {note.Notebook?.title}</span>
+                        <span>note: {note?.title}</span>
+                        <span>content: {note?.content}</span>
                         <NavLink to={`/${note?.id}/${note.Notebook?.id}`}>Edit</NavLink>
                         {/* <button type="click" value={note.id} onClick={onEdit}>Edit</button> */}
                         <button type="click" value={note.id} onClick={onDelete}>Delete</button>

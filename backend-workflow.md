@@ -47,8 +47,10 @@ DB_USERNAME=auth_app
 DB_PASSWORD=«auth_app user password»
 DB_DATABASE=auth_db
 DB_HOST=localhost
-JWT_SECRET=«generate_strong_secret_here»//Run <openssl rand -base64 10> to generate a random JWT secret.
+JWT_SECRET=YV4Nodc1pSNPRg==
 JWT_EXPIRES_IN=604800
+
+«generate_strong_secret_here»//Run <openssl rand -base64 10> to generate a random JWT secret.
 
 - backend/config/index.js (create a js configuration file that will read the environment variables loaded and export them.)
 
