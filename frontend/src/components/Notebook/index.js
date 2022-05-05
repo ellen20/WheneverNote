@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import * as notebookActions from "../../store/notebook";
 import "./Notebook.css";
-import { Redirect, useHistory } from 'react-router-dom';
-import { createNotebook } from '../../store/notebook';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 
 function Notebook() {
@@ -14,9 +13,10 @@ function Notebook() {
 
     const onClick = () => {
         setErrors([]);
-        const newNotebook = { userId: sessionUser.id , title: title };
         history.replace('/notebooks')
-        dispatch(createNotebook(newNotebook));
+        const newNotebook = { userId: sessionUser.id , title: title };
+
+        dispatch(notebookActions.createNotebook(newNotebook));
 
         // return dispatch(sessionActions.login({ credential: "Demo-lition", password: "password" })).catch(
         //     async (res) => {
@@ -28,7 +28,8 @@ function Notebook() {
 
     const onCancel = () =>{
       history.replace('/')
-    }
+    };
+
     return (
         <div className="notebook-page">
             <ul>

@@ -3,6 +3,7 @@ import * as notebookActions from "../../store/notebook";
 import { useDispatch, useSelector } from "react-redux";
 import "./Notebooks.css";
 import {NavLink, useHistory} from 'react-router-dom';
+import Note from '../Note';
 
 function Notebooks() {
     const dispatch = useDispatch();
@@ -16,11 +17,6 @@ function Notebooks() {
         dispatch(notebookActions.getNotebooks())
     },[]);
 
-    const onEdit = () => {
-        setErrors([]);
-
-    }
-
     const onDelete = (e) => {
         // setId(e.target.value);
         let id = e.target.value;
@@ -30,7 +26,8 @@ function Notebooks() {
         // dispatch(notebookActions.getNotebooks())
     }
 
-    notebooks.sort((a, b) => b.id - a.id)
+    notebooks.sort((a, b) => b.id - a.id);
+
 
     return (
         <div className="notebooks-page">
@@ -49,9 +46,10 @@ function Notebooks() {
                         Updated At: {notebook?.updatedAt} */}
                     {/* <button className="notebook-edit" type="button" name="edit" value={notebook.id} onClick={onEdit}>Edit</button> */}
                     <button className="notebook-delete" type="button" name='delete' value={notebook.id} onClick={onDelete}>Delete</button>
-                    <NavLink to='/note/new'>Create New Note</NavLink>
+                    <NavLink to={`/note/${notebook.id}`} >Create New Note</NavLink>
             </li>))}
             </ol>
+
             <NavLink to='/'>Cancel</NavLink>
         </div>
     );
