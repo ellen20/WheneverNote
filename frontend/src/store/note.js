@@ -13,7 +13,7 @@ const loadNotes = (notes) => {
 };
 
 export const getNotes = () => async (dispatch) => {
-    const response = await csrfFetch('/api/note');
+    const response = await csrfFetch(`/api/note/`);
     const data = await response.json();
     dispatch(loadNotes(data.notes));
     return response;
@@ -38,7 +38,6 @@ export const createNote = (note) => async (dispatch) => {
         }),
     });
     const data = await response.json();
-    // console.log(">>>>>>>>", data)
     dispatch(setNote(data.note));
     return response;
 };
@@ -58,7 +57,6 @@ export const deleteNote = (id) => async (dispatch) => {
         }),
     });
     const data = await response.json();
-    // console.log("<<<<<<<<<<<", data)
     dispatch(removeNote(id));
     return response;
 };
@@ -82,7 +80,6 @@ export const editNote = (id ,note) => async (dispatch) => {
         }),
     });
     const data = await response.json();
-    console.log("??????",data)
     dispatch(updateNote(data.updatedNote));
     return response;
 };
@@ -93,7 +90,7 @@ const noteReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_NOTES:
-            newState = { ...state };
+            newState = { ...state.session, ...state.notebook };
             action.notes.forEach(note => {
                 newState[note.id] = note
             })

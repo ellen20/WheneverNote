@@ -14,7 +14,13 @@ const validateNote = [
 ];
 
 router.get('/', asyncHandler(async (req, res) => {
-    const notes = await Note.findAll({ include: Notebook});
+    // const { userId } = req.params;
+
+    const notes = await Note.findAll(
+        // {where: {userId : userId},
+        { include: Notebook}
+        );
+
     return res.json({
         notes
     })
@@ -63,5 +69,19 @@ router.delete('/', async (req, res) => {
         note
     })
 })
+
+// router.delete('/delete', async (req, res) => {
+//     const { id } = req.body;
+//     const notes = await Note.findAll(
+//         { where:
+//             { notebookId: id }
+//         });
+
+//     await notes.forEach(note => note.destroy());
+
+//     return res.json({
+//         notes
+//     })
+// })
 
 module.exports = router;

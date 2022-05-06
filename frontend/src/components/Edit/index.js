@@ -6,7 +6,6 @@ import { useHistory, useParams } from "react-router-dom";
 
 function Edit() {
     const dispatch = useDispatch();
-    const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [errors, setErrors] = useState([]);
     const history = useHistory();
@@ -19,6 +18,7 @@ function Edit() {
     id = parseInt(id, 10);
 
     const defaultNote = notes.filter(note => note.id === id);
+    const [title, setTitle] = useState(defaultNote[0].title);
 
     const onEdit = () => {
         setErrors([]);

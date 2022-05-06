@@ -7,21 +7,19 @@ import './Notes.css';
 function Notes() {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state)=> state.session.user);
+    let allNotes = useSelector((state) => state.note);
+    allNotes = Object.values(allNotes);
 
     useEffect(() => {
         dispatch(noteActions.getNotes())
-    }, []);
+    }, [dispatch]);
 
-    let notes = useSelector((state) => state.note);
-    notes = Object.values(notes);
+    const notes = allNotes.filter(note => note.userId === sessionUser?.id);
     notes.sort((a, b) => b.id - a.id);
-    console.log("!!!!!!!!!", notes)
 
     const onDelete = (e) => {
-        let id = e.target.value;
-        console.log(">>>>>",id)
+        let id = e.currentTarget.value;
         dispatch(noteActions.deleteNote(id));
-
     };
 
     return (
@@ -41,31 +39,12 @@ function Notes() {
                             <i class="fa-solid fa-pen-to-square"></i>
                         </NavLink>
                         <button type="click" value={note.id} onClick={onDelete}>
-                            DELETE
+                            {/* DELETE */}
+                            <i class="fa-solid fa-trash-can"></i>
                         </button>
                     </li>
                 ))}
             </ul>
-            {/* <ul>
-                {notes.map((note, idx) => (
-                    <li key={idx}>
-                        <div className="note-list">
-                            <div className="title">
-                                {note.Notebook?.title}: {note?.title}
-                            </div>
-                            <div className="note-content">
-                                {note?.content}
-                                <NavLink to={`/${note?.id}/${note.Notebook?.id}`}>
-                                    <i class="fas fa-edit"></i>
-                                </NavLink>
-                            <button type="click" name='delete' value={note?.id} onClick={(e)=>onDelete(e)}>
-                                Delete
-                            </button>
-                            </div>
-                        </div>
-                    </li>
-                ))}
-            </ul> */}
         </div>
     );
 }
