@@ -32,16 +32,21 @@ function Notes() {
             <ul>
                 {notes.map((note, idx) => (
                     <li key={idx}>
-                        <span>{note.Notebook?.title}</span>
-                        <span>{note?.title}</span>
-                        <span>content: {note?.content}</span>
-                        <NavLink to={`/${note?.id}/${note.Notebook?.id}`}>
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </NavLink>
-                        <button type="click" value={note.id} onClick={onDelete}>
-                            {/* DELETE */}
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
+                        <div clasName="note-list">
+                            Notebook: {note.Notebook?.title}      Note: {note?.title}
+                            <div className="note-content">
+                            {note?.content}
+                            <NavLink to={`/${note?.id}/${note.Notebook?.id}`}>
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </NavLink>
+                            <button type="click" value={note.id} onClick={onDelete}>
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                                {/* <NavLink to={`/delete/${note?.id}`}>
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </NavLink> */}
+                            </div>
+                        </div>
                     </li>
                 ))}
             </ul>

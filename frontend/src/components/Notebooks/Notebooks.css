@@ -8,6 +8,9 @@
     font-size: 20px;
     font-family: courier, monospace;
 }
-li {
-    color: blue;
+
+.notebook-list {
+   border: 2px solid gray ;
+   border-radius: 10px;
+   color: rgb(31, 29, 29);
 }

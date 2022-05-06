@@ -13,10 +13,19 @@ function Notebook() {
 
     const onClick = () => {
         setErrors([]);
-        history.replace('/notebooks')
-        const newNotebook = { userId: sessionUser.id , title: title };
+        history.replace('/notebooks');
 
-        dispatch(notebookActions.createNotebook(newNotebook));
+        const newNotebook = { userId: sessionUser.id , title: title };
+        // dispatch(notebookActions.createNotebook(newNotebook));
+        return dispatch(
+            notebookActions.createNotebook(newNotebook)
+        ).catch(
+            async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+            }
+
+        );
     }
 
     const onCancel = () =>{
@@ -43,7 +52,7 @@ function Notebook() {
                 />
             </label>
             <div className="buttons">
-            <button type="button" onClick={onClick}>Add Notebook</button>
+            <button type="button" onClick={onClick} disabled={!title}>Add Notebook</button>
             <button type="button" onClick={onCancel}>Cancel</button>
             </div>
         </div>

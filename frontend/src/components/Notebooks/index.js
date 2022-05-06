@@ -34,24 +34,18 @@ function Notebooks() {
                 <i class="fa-solid fa-book"></i>
             </NavLink>
             <ul>
-                {errors.map((error, idx) => (
-                    <li key={idx}>{error} </li>
-                ))}
+                {notebooks.map((notebook, idx) => (
+                    <li className="notebook-list" key={idx}>
+                        Notebook: {notebook?.title}
+                        <NavLink to={`/note/${notebook.id}`} >
+                            <i class="fa-solid fa-plus"></i>
+                            <i class="fa-solid fa-note-sticky"></i>
+                        </NavLink>
+                        <button type="button" value={notebook.id} onClick={(e)=>onDelete(e)}>
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </li>))}
             </ul>
-            <ol>
-                 {notebooks.map((notebook, idx) => (
-                    <li key={idx}>
-                        {notebook?.title}
-                    <button type="button" value={notebook.id} onClick={(e)=>onDelete(e)}>
-                        <i class="fa-solid fa-trash-can"></i>
-                    </button>
-                    <NavLink to={`/note/${notebook.id}`} >
-                        <i class="fa-solid fa-plus"></i>
-                        <i class="fa-solid fa-note-sticky"></i>
-                    </NavLink>
-            </li>))}
-            </ol>
-            <NavLink to='/'>Cancel</NavLink>
         </div>
     );
 }

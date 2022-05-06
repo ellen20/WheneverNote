@@ -22,6 +22,6 @@ button {
     margin-top: 10px;
 }
 
-li {
+.error-list {
     color: rgb(255, 98, 0);
 }

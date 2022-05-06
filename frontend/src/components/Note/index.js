@@ -53,7 +53,7 @@ function Note() {
                 />
             </label>
             <div className="buttons">
-                <button type="button" onClick={onAdd}>Add Note</button>
+                <button type="button" onClick={onAdd} disabled={!title}>Add Note</button>
                 <button type="button" onClick={onCancel}>Cancel</button>
             </div>
         </div>
