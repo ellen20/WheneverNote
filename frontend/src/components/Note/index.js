@@ -26,7 +26,10 @@ function Note() {
         history.replace('/notebooks')
     }
     return (
-        <div className="note-page">
+        <div className="note-page" style={{
+            position: 'absolute', left: '50%', top: '50%',
+            transform: 'translate(-50%, -50%)'
+        }} >
             <ul>
                 {errors.map((error, idx) => (
                     <li key={idx}>{error} </li>
@@ -49,8 +52,10 @@ function Note() {
                     required
                 />
             </label>
-            <button type="button" onClick={onAdd}>Add Note</button>
-            <button type="button" onClick={onCancel}>Cancel</button>
+            <div className="buttons">
+                <button type="button" onClick={onAdd}>Add Note</button>
+                <button type="button" onClick={onCancel}>Cancel</button>
+            </div>
         </div>
     );
 }

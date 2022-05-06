@@ -4,8 +4,9 @@
     align-items: center;
     padding: 10px;
     border: 2px solid yellow;
+    border-radius: 20px;
     margin: auto ;
-    width: 200px;
+    width: 300px;
 }
 
 label {

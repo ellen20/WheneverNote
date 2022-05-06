@@ -18,6 +18,7 @@ function SignupFormPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        history.push('/notes');
         if (password === confirmPassword) {
             setErrors([]);
             return dispatch(sessionActions.signup({ email, username, password }))
@@ -28,8 +29,6 @@ function SignupFormPage() {
         }
         return setErrors(['Confirm Password field must be the same as the Password field']);
     };
-
-    history.push('/notes');//Once Sign up, go to the /notes page show previous notes.
 
     return (
         <form onSubmit={handleSubmit} className="signup-form">

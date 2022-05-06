@@ -10,9 +10,19 @@ function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
 
     let sessionLinks;
+
+
     if (sessionUser) {
         sessionLinks = (
-            <ProfileButton user={sessionUser} />
+            <>
+                <NavLink to='/notebooks' style={{ textDecoration: 'none' }}>
+                    <i class="fa-solid fa-book"></i>
+                </NavLink>
+                <NavLink to='/notes' style={{ textDecoration: 'none' }}>
+                    <i class="fa-solid fa-note-sticky"></i>
+                </NavLink>
+                <ProfileButton user={sessionUser} />
+            </>
         );
     } else {
         sessionLinks = (
@@ -28,7 +38,9 @@ function Navigation({ isLoaded }) {
     return (
         <ul className='nav'>
             <li>
-                <NavLink exact to="/">Home</NavLink>
+                <div className="nav-links">
+                   <NavLink exact to="/" style={{ textDecoration: 'none' }}>Whenevernote</NavLink>
+                </div>
                 {isLoaded && sessionLinks}
             </li>
         </ul>

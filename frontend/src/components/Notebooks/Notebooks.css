@@ -1,10 +1,12 @@
 .notebooks-page {
-    background-color: white;
+    border: 5px solid rgba(32, 31, 31, 0.899) ;
+    border-radius: 30px;
+    background-color: #f5f5f5;
     width: auto;
-    height: auto;
-    border: 5px groove yellow ;
-    padding: 10px;
-    margin: 10px;
+    margin: auto;
+    padding-left: 10px;
+    font-size: 20px;
+    font-family: courier, monospace;
 }
 li {
     color: blue;

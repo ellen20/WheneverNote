@@ -26,7 +26,10 @@ function Notebooks() {
     return (
         <div className="notebooks-page">
             <h2>All Notebooks:</h2>
-            <NavLink to='/notebook/new' >Create Notebook</NavLink>
+            <NavLink to='/notebook/new' >
+                <i class="fa-solid fa-plus"></i>
+                <i class="fa-solid fa-book"></i>
+            </NavLink>
             <ul>
                 {errors.map((error, idx) => (
                     <li key={idx}>{error} </li>
@@ -35,12 +38,15 @@ function Notebooks() {
             <ol>
                  {notebooks.map((notebook, idx) => (
                     <li key={idx}>
-                        <span>Title: {notebook?.title}</span>
+                        {notebook?.title}
                         {/* <span>Created At: {notebook?.createdAt}</span>
                         <span>Updated At: {notebook?.updatedAt}</span> */}
                     {/* <button className="notebook-edit" type="button" name="edit" value={notebook.id} onClick={onEdit}>Edit</button> */}
-                    <button className="notebook-delete" type="button" name='delete' value={notebook.id} onClick={onDelete}>Delete</button>
-                    <NavLink to={`/note/${notebook.id}`} >Create New Note</NavLink>
+                    <button type="button" value={notebook.id} onClick={onDelete}>Delete</button>
+                    <NavLink to={`/note/${notebook.id}`} >
+                        <i class="fa-solid fa-plus"></i>
+                        <i class="fa-solid fa-note-sticky"></i>
+                    </NavLink>
             </li>))}
             </ol>
 
