@@ -4,3 +4,19 @@ body {
     font-size: 22px;
     font-family: courier, monospace;
 }
+
+footer {
+  padding: 15px;
+  width: 100%;
+  background-color: #f2f3f7;
+  color: white;
+  /* margin-right: 10px;
+  margin-left: 10px; */
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+}
+
+footer a{
+ text-decoration: none;
+}
