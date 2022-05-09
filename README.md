@@ -2,7 +2,7 @@
 
 Whenevernote is a web application where users can note taking and also create notebooks whenever they want. It is cloned from Evernote.
 
-Welcome to check out a live version of Whenever here: [Whenever.com](https://whenever-note.herokuapp.com/)
+Welcome to check out a live version of Whenevernote here: [Whenever.com](https://whenever-note.herokuapp.com/)
 
 ## Built With
   - React.js
