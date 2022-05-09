@@ -30,7 +30,10 @@ function Edit() {
         history.replace('/notes')
     }
     return (
-        <div className="note-page">
+        <div className="note-page" style={{
+            position: 'absolute', left: '50%', top: '50%',
+            transform: 'translate(-50%, -50%)'
+        }}>
 
             <label>
                 Title:

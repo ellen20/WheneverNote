@@ -23,23 +23,24 @@ function Notebooks() {
 
     const onDelete = (e) => {
         let id = e.currentTarget.value;
+        alert("Are you sure to delete this notebook?");
         dispatch(notebookActions.deleteNotebook(id));
     }
 
     return (
         <div className="notebooks-page">
-            <h2>All Notebooks:</h2>
-            <NavLink to='/notebook/new' >
+            <h2>{sessionUser?.username}'s Notebooks:</h2>
+            <NavLink to='/notebook/new' style={{textDecoration: "none"}} >
                 <i class="fa-solid fa-plus"></i>
-                <i class="fa-solid fa-book"></i>
+                NEW<i class="fa-solid fa-book"></i>
             </NavLink>
             <ul>
                 {notebooks.map((notebook, idx) => (
                     <li className="notebook-list" key={idx}>
                         Notebook: {notebook?.title}
-                        <NavLink to={`/note/${notebook.id}`} >
+                        <NavLink to={`/note/${notebook.id}`} style={{ textDecoration: "none" }} >
                             <i class="fa-solid fa-plus"></i>
-                            <i class="fa-solid fa-note-sticky"></i>
+                            NEW<i class="fa-solid fa-note-sticky"></i>
                         </NavLink>
                         <button type="button" value={notebook.id} onClick={(e)=>onDelete(e)}>
                             <i class="fa-solid fa-trash-can"></i>

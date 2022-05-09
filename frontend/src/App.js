@@ -8,7 +8,7 @@ import Notes from "./components/Notes";
 import Notebooks from "./components/Notebooks";
 import Note from "./components/Note";
 import Edit from "./components/Edit";
-import DeleteNote from "./components/DeleteNote";
+import HomePage from "./components/HomePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +24,9 @@ function App() {
       {isLoaded && (
 
         <Switch>
+          <Route path="/" exact>
+            <HomePage />
+          </Route>
           <Route path="/notebooks">
             <Notebooks />
           </Route>
@@ -38,9 +41,6 @@ function App() {
           </Route>
           <Route path="/:id/:notebookId">
             <Edit />
-          </Route>
-          <Route path="/delete/:id">
-            <DeleteNote />
           </Route>
         </Switch>
       )}

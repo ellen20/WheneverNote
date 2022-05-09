@@ -13,4 +13,9 @@ li {
 .nav-links {
     display: flex;
     justify-content: space-evenly;
+    padding-top: 5px;
+}
+
+.login-signup {
+padding-right: 10px;
 }

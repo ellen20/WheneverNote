@@ -69,8 +69,8 @@ function LoginForm() {
                     required
                 />
             </label>
-            <button type="submit">Log In</button>
-            <button type="button" onClick={onClick}>Demo User</button>
+            <button className="login-button" type="submit">Log In</button>
+            <button className="demo-user" type="button" onClick={onClick}>Demo User</button>
         </form>
     );
 }

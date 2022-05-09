@@ -2,9 +2,16 @@ import './HomePage.css';
 
 function HomePage(){
     return (
-        <div className='homepage'>
-            <h1>Welcome To </h1>
-        </div>
+        <footer>
+            <div >
+                <a href="https://github.com/ellen20" target="_blank"> Jingling Jin
+                    <i class="fa-brands fa-github"></i>
+                </a>
+            </div>
+            <div className="footer-text">
+                JavaScript HTML CSS React Redux Express Sequelize ProstgresSQL
+            </div>
+        </footer>
     )
 }
 

@@ -25,3 +25,11 @@
     display: flex;
     flex-direction: column;
 }
+
+.notebook {
+    color: blue
+}
+
+.note{
+    color:rgba(23, 20, 20, 0.899)
+}

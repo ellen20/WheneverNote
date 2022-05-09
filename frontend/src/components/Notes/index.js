@@ -19,21 +19,23 @@ function Notes() {
 
     const onDelete = (e) => {
         let id = e.currentTarget.value;
+        alert("Are you sure to delete this note?");
         dispatch(noteActions.deleteNote(id));
     };
 
     return (
         <div className="notes-page">
-                <h2>All Notes:</h2>
-                <NavLink to='/notebook/new'>
+                <h2>{sessionUser?.username}'s Notes:</h2>
+                <NavLink to='/notebook/new' style={{textDecoration: "none"}}>
                     <i class="fa-solid fa-plus"></i>
-                    <i class="fa-solid fa-book"></i>
+                    NEW<i class="fa-solid fa-book"></i>
                 </NavLink>
             <ul>
                 {notes.map((note, idx) => (
                     <li key={idx}>
                         <div clasName="note-list">
-                            Notebook: {note.Notebook?.title}      Note: {note?.title}
+                            <div className="notebook">Notebook: {note.Notebook?.title}</div>
+                            <div className="note">Note: {note?.title}</div>
                             <div className="note-content">
                             {note?.content}
                             <NavLink to={`/${note?.id}/${note.Notebook?.id}`}>
@@ -42,9 +44,6 @@ function Notes() {
                             <button type="click" value={note.id} onClick={onDelete}>
                                 <i class="fa-solid fa-trash-can"></i>
                             </button>
-                                {/* <NavLink to={`/delete/${note?.id}`}>
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </NavLink> */}
                             </div>
                         </div>
                     </li>

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
-import SignupFormModal from '../SignupFormModal';//
+import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
@@ -16,10 +16,10 @@ function Navigation({ isLoaded }) {
         sessionLinks = (
             <>
                 <NavLink to='/notebooks' style={{ textDecoration: 'none' }}>
-                    <i class="fa-solid fa-book"></i>
+                    <i class="fa-solid fa-book"></i> Notebooks
                 </NavLink>
                 <NavLink to='/notes' style={{ textDecoration: 'none' }}>
-                    <i class="fa-solid fa-note-sticky"></i>
+                    <i class="fa-solid fa-note-sticky"></i> Notes
                 </NavLink>
                 <ProfileButton user={sessionUser} />
             </>
@@ -28,8 +28,7 @@ function Navigation({ isLoaded }) {
         sessionLinks = (
             <>
                 <div className='login-signup'>
-                    <LoginFormModal />
-                    <SignupFormModal />
+                    <LoginFormModal /> | <SignupFormModal />
                 </div>
             </>
         );

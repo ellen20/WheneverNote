@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import {useHistory} from 'react-router-dom';
+import "./Navigation.css";
 
 function ProfileButton({ user }) {
     const dispatch = useDispatch();
@@ -37,8 +38,8 @@ function ProfileButton({ user }) {
                 <i class="fa-solid fa-user"></i>
             </button>
             {showMenu && (
-                <div>
-                    {user.username}
+                <div className="username-logout">
+                    |  {user.username}   |
                     <button onClick={logout}>Log Out</button>
                 </div>
             )}

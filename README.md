@@ -12,6 +12,7 @@ Welcome to check out a live version of Whenever here: [Whenever.com](https://whe
   - CSS
   - Express
   - Sequelize
+  - PostgreSQL
 
 ## Features
   - Sign up / login with email or username
