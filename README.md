@@ -58,8 +58,8 @@ Welcome to check out a live version of Whenevernote here: [Whenever.com](https:/
   7. Inside the repo folder, add Heroku as a remote to the project repo by typing `heroku git:remote -a <name-of-Heroku-app>`
      (replace <name-of-Heroku-app> with the name of the application you made, for example "Whenevernote")
   8. Back in Heroku, inside the "Settings" page of your newly created app, click on "Reveal Config Vars", and add the variables from the .env file for JWT_EXPIRES_IN and JWT_SECRET for Heroku.
-  9. Push the project up to Heroku by typing git push heroku main by typing `git push heroku master`
+  9. Push the project up to Heroku by typing `git push heroku master`
   10. To migrate and seed the data base, run the following commands:
     - heroku run npm run sequelize db:migrate
     - heroku run npm run sequelize db:seed:all
-  11. To start it `heroku open`
+  11. To start it by typing `heroku open`
