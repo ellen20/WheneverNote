@@ -12,8 +12,6 @@ function LoginForm() {
     const history = useHistory();
     const sessionUser = useSelector((state=>state.session.user));
 
-
-
     const handleSubmit = (e) => {
         e.preventDefault();
         history.push('/notes');
