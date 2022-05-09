@@ -17,11 +17,11 @@ Welcome to check out a live version of Whenevernote here: [Whenever.com](https:/
 ## Features
   - Sign up / login with email or username
   - Logged in users can:
-    - Create note
-    - Edit note
-    - Delete note
-    - Create notebook
-    - Delete notebook
+    - Create new notes
+    - Edit their made notes
+    - Delete their made notes
+    - Create new notebook
+    - Delete their made notebook and delete all notes included at the same time
 
 ## Getting Started
 
