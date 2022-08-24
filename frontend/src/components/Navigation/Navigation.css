@@ -19,3 +19,9 @@ li {
 .login-signup {
 padding-right: 10px;
 }
+
+.logo {
+    width: 2rem;
+    height: 1.5rem;
+    padding-left: .5rem;
+}

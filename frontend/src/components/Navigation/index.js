@@ -5,6 +5,7 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
+import logo from './logo.png';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -37,7 +38,11 @@ function Navigation({ isLoaded }) {
     return (
         <ul className='nav'>
             <li>
+
                 <div className="nav-links">
+                    <span>
+                        <img className='logo' src={logo} />
+                    </span>
                    <NavLink
                     exact to="/" style={{ textDecoration: 'none' }}
                     >
