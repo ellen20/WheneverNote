@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import * as notebookActions from "../../store/notebook";
-import * as noteActions from "../../store/note";
 import { useDispatch, useSelector } from "react-redux";
 import "./Notebooks.css";
 import {NavLink, useHistory} from 'react-router-dom';
-import Note from '../Note';
+import NotebooksModal from "./NotebooksModal";
 
 function Notebooks() {
     const dispatch = useDispatch();
@@ -21,12 +20,6 @@ function Notebooks() {
 
     const notebooks = allNotebooks.filter(note => note.userId === sessionUser?.id)
 
-    const onDelete = (e) => {
-        let id = e.currentTarget.value;
-        alert("Are you sure to delete this notebook?");
-        dispatch(notebookActions.deleteNotebook(id));
-    }
-
     return (
         <div className="notebooks-page">
             <h2>{sessionUser?.username}'s Notebooks:</h2>
@@ -38,13 +31,22 @@ function Notebooks() {
                 {notebooks.map((notebook, idx) => (
                     <li className="notebook-list" key={idx}>
                         Notebook: {notebook?.title}
-                        <NavLink to={`/note/${notebook.id}`} style={{ textDecoration: "none" }} >
+                        <NavLink
+                            to={`/note/${notebook.id}`}
+                            style={{ textDecoration: "none" }}
+                        >
                             <i class="fa-solid fa-plus"></i>
                             NEW<i class="fa-solid fa-note-sticky"></i>
                         </NavLink>
-                        <button type="button" value={notebook.id} onClick={(e)=>onDelete(e)}>
+                        {/* <button
+                            type="button"
+                            value={notebook.id}
+                            onClick={(e)=>onDelete(e)}
+                        >
                             <i class="fa-solid fa-trash-can"></i>
-                        </button>
+                        </button> */}
+                        <NotebooksModal notebook={notebook} />
+
                     </li>))}
             </ul>
         </div>

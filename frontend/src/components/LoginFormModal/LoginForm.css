@@ -27,5 +27,5 @@ label {
     padding: 5px;
 }
 .error-list {
-    color: rgb(255, 98, 0);
+    color: red;
 }
