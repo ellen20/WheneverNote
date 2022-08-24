@@ -38,7 +38,11 @@ function Navigation({ isLoaded }) {
         <ul className='nav'>
             <li>
                 <div className="nav-links">
-                   <NavLink exact to="/" style={{ textDecoration: 'none' }}>Whenevernote</NavLink>
+                   <NavLink
+                    exact to="/" style={{ textDecoration: 'none' }}
+                    >
+                        Whenevernote
+                    </NavLink>
                 </div>
                 {isLoaded && sessionLinks}
             </li>

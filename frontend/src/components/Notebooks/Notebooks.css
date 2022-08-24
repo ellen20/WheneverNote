@@ -16,3 +16,22 @@
    margin: 10px;
    padding: 5px;
 }
+
+.delete-notebook-box {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.yes-btn, .cancel-btn {
+    padding: 0.5rem;
+    width: 6rem;
+    margin: 1rem;
+}
+
+.delete-notebook-title {
+    color: blue;
+    font-weight: bold;
+}
