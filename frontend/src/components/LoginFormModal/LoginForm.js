@@ -14,7 +14,7 @@ function LoginForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        history.push('/notes');
+        // history.push('/notes');
         setErrors([]);
 
         return dispatch(
@@ -23,6 +23,7 @@ function LoginForm() {
             async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
+                else history.push('/notes');
             }
 
         );
@@ -33,11 +34,12 @@ function LoginForm() {
         setErrors([]);
         setCredential("Demo-lition");
         setPassword("password");
-        history.push('/notes');
+        // history.push('/notes');
         return dispatch(sessionActions.login({ credential: "Demo-lition", password:"password" })).catch(
             async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
+                else history.push('/notes');
             }
         );
     };
@@ -50,7 +52,9 @@ function LoginForm() {
                 ))}
             </ul>
             <label>
-                Username or Email
+                <div className="label-name">
+                    Username or Email
+                </div>
                 <input
                     type="text"
                     value={credential}
@@ -59,7 +63,9 @@ function LoginForm() {
                 />
             </label>
             <label>
-                Password
+                <div className="label-name">
+                    Password
+                </div>
                 <input
                     type="password"
                     value={password}

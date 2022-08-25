@@ -3,7 +3,6 @@
     flex-direction: column;
     align-items: center;
     padding: 10px;
-    border: 2px solid yellow;
     border-radius: 20px;
     margin: auto ;
     width: 350px;
@@ -12,9 +11,18 @@
 
 .signup-button {
     padding: 5px;
-    margin: 10px;
+    margin-bottom: 2rem;
+    width: 10rem;
+    cursor: pointer;
+    margin-top: 1rem;
 }
 
 .errors {
     color: red;
+}
+
+.signup-btn {
+    padding: .2rem;
+    width: 7rem;
+    cursor: pointer;
 }

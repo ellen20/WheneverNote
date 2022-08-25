@@ -8,20 +8,35 @@ li {
 }
 .nav{
     background-color: rgb(246, 249, 250);
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2rem;
+    margin-bottom: 1rem;
+    border-radius: 20px;
 }
 
 .nav-links {
     display: flex;
-    justify-content: space-evenly;
-    padding-top: 5px;
+    justify-content: row;
+    gap: 0.5rem;
+}
+
+.session-links {
+    margin-right: 1rem;
 }
 
 .login-signup {
-padding-right: 10px;
+    padding-right: 10px;
 }
 
 .logo {
-    width: 2rem;
-    height: 1.5rem;
-    padding-left: .5rem;
+    width: 2.5rem;
+    height: 2rem;
+    padding-left: .8rem;
+}
+
+.logo-name {
+    font-size: 1.8rem;
 }

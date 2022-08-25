@@ -1,31 +1,45 @@
 .login-form{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 20px;
-    border: 2px solid yellow;
-    border-radius: 20px;
-    margin: auto ;
     width: 350px;
     text-align: center;
+    margin-bottom: 2rem;
 }
 
 label {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
+   margin-bottom: 1rem;
+}
+
+.label-name {
+    margin-bottom: 0.3rem;
+}
+
+input {
+    height: 2rem;
+    margin-bottom: 0.3rem;
 }
 
 .login-button {
-   margin: 10px;
-   padding: 5px;
+    width: 10rem;
+    margin: 10px;
+    padding: 5px;
+    cursor: pointer;
 }
 
 .demo-user {
+    width: 10rem;
     margin: 10px;
     padding: 5px;
+    cursor: pointer;
 }
 .error-list {
     color: red;
+}
+
+.login-btn {
+    padding: .2rem;
+    width: 7rem;
+    cursor: pointer;
 }
