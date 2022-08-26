@@ -1,3 +1,28 @@
 .homepage{
     background-image: url(https://clickup.com/blog/wp-content/uploads/2020/01/note-taking.png);
 }
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    background-color: rgb(246, 249, 250);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 77rem;
+    padding: 1rem;
+}
+
+.footer-text {
+    font-size: 1rem;
+    padding-right: 2rem;
+}
+.creator-info {
+    font-size: 1rem;
+    padding-left: 2rem;
+}
+
+.github-link {
+
+}

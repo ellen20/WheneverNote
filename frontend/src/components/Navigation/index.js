@@ -9,17 +9,15 @@ import logo from './logo.png';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
-
     let sessionLinks;
-
 
     if (sessionUser) {
         sessionLinks = (
             <>
-                <NavLink to='/notebooks' style={{ textDecoration: 'none' }}>
+                <NavLink to='/notebooks' style={{ textDecoration: 'none', padding: '1rem' }}>
                     <i class="fa-solid fa-book"></i> Notebooks
                 </NavLink>
-                <NavLink to='/notes' style={{ textDecoration: 'none' }}>
+                <NavLink to='/notes' style={{ textDecoration: 'none', padding: '1rem' }}>
                     <i class="fa-solid fa-note-sticky"></i> Notes
                 </NavLink>
                 <ProfileButton user={sessionUser} />
@@ -36,22 +34,21 @@ function Navigation({ isLoaded }) {
     }
 
     return (
-        <ul className='nav'>
-            <li>
-
-                <div className="nav-links">
+        <div className='nav'>
+            <div className="nav-links">
                     <span>
                         <img className='logo' src={logo} />
                     </span>
-                   <NavLink
+                   <NavLink className='logo-name'
                     exact to="/" style={{ textDecoration: 'none' }}
                     >
                         Whenevernote
                     </NavLink>
-                </div>
+            </div>
+            <div className='session-links'>
                 {isLoaded && sessionLinks}
-            </li>
-        </ul>
+            </div>
+        </div>
     );
 }
 
