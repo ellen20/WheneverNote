@@ -3,6 +3,7 @@ import * as noteActions from "../../store/note";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Redirect } from 'react-router-dom';
 import './Notes.css';
+import NotesModal from "./NotesModal";
 
 function Notes() {
     const dispatch = useDispatch();
@@ -17,11 +18,11 @@ function Notes() {
     const notes = allNotes.filter(note => note.userId === sessionUser?.id);
     notes.sort((a, b) => b.id - a.id);
 
-    const onDelete = (e) => {
-        let id = e.currentTarget.value;
-        alert("Are you sure to delete this note?");
-        dispatch(noteActions.deleteNote(id));
-    };
+    // const onDelete = (e) => {
+    //     let id = e.currentTarget.value;
+    //     alert("Are you sure to delete this note?");
+    //     dispatch(noteActions.deleteNote(id));
+    // };
 
     return (
         <div className="notes-page">
@@ -41,9 +42,10 @@ function Notes() {
                             <NavLink to={`/${note?.id}/${note.Notebook?.id}`}>
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </NavLink>
-                            <button type="click" value={note.id} onClick={onDelete}>
+                            {/* <button type="click" value={note.id} onClick={onDelete}>
                                 <i class="fa-solid fa-trash-can"></i>
-                            </button>
+                            </button> */}
+                            <NotesModal note={note} />
                             </div>
                         </div>
                     </li>
