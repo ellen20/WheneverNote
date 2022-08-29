@@ -11,37 +11,43 @@ function LoginForm() {
     const [errors, setErrors] = useState([]);
     const history = useHistory();
     const sessionUser = useSelector((state=>state.session.user));
+    let err = 0;
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // history.push('/notes');
         setErrors([]);
 
-        return dispatch(
+        await dispatch(
             sessionActions.login({ credential, password })
             ).catch(
             async (res) => {
                 const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
-                else history.push('/notes');
+                if (data && data.errors) {
+                    setErrors(data.errors);
+                    err = 1;
+                }
             }
 
         );
-
+        if(err != 1) history.push('/notes');
     };
 
-    const onClick = () => {
+    const onClick = async () => {
         setErrors([]);
         setCredential("Demo-lition");
         setPassword("password");
-        // history.push('/notes');
-        return dispatch(sessionActions.login({ credential: "Demo-lition", password:"password" })).catch(
+
+        await dispatch(sessionActions.login({ credential: "Demo-lition", password:"password" })).catch(
             async (res) => {
                 const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
-                else history.push('/notes');
+                if (data && data.errors) {
+                    setErrors(data.errors);
+                    err = 1;
+                }
             }
         );
+
+        if(err != 1) history.push('/notes');
     };
 
     return (
